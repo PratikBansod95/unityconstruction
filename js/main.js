@@ -1,25 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // ── 1. SCROLL PROGRESS + NAV STUCK + VIDEO PARALLAX
+  // ── 1. NAV STUCK STATE (scroll progress handled by scroll-engine.js)
   const nav = document.getElementById('nav');
-  const sp = document.getElementById('sp');
-  const hv = document.getElementById('hv');
 
   window.addEventListener('scroll', () => {
-    const scrollY = window.scrollY;
-    const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const pct = scrollHeight > 0 ? (scrollY / scrollHeight) * 100 : 0;
-    
-    if (sp) {
-      sp.style.width = `${pct}%`;
-    }
-    
     if (nav) {
-      nav.classList.toggle('stuck', scrollY > 40);
-    }
-
-    // Video parallax translation
-    if (hv && scrollY < window.innerHeight) {
-      hv.style.transform = `scale(1.05) translateY(${scrollY * 0.18}px)`;
+      nav.classList.toggle('stuck', window.scrollY > 40);
     }
   }, { passive: true });
 

@@ -19,6 +19,18 @@
 </head>
 <body data-theme="dark">
 
+  <!-- ══ LOADING OVERLAY — shows frame preload progress ══ -->
+  <div id="loading-overlay">
+    <div class="loading-logo">
+      <div class="nlogo-gem"><span class="nlogo-u">U</span></div>
+      <span class="nlogo-name">Unity Construction</span>
+    </div>
+    <div class="loading-track">
+      <div id="loading-bar"></div>
+    </div>
+    <span id="loading-percent">0%</span>
+  </div>
+
   <!-- Custom Interactive Cursor -->
   <div id="cur"></div>
   <div id="cur-r"></div>
@@ -44,47 +56,66 @@
     </div>
   </nav>
 
-  <!-- ══ HERO SECTION ══ -->
+  <!-- ══ HERO SECTION — Sticky Canvas Frame Sequence ══ -->
   <section id="hero">
-    <!-- Decoded Local Video Asset -->
-    <div class="hvid">
-      <video autoplay muted loop playsinline id="hv" preload="auto">
-        <source src="assets/video/hero.mp4" type="video/mp4">
-      </video>
-    </div>
+    <div class="hero-sticky">
+      <!-- Canvas — draws frames on scroll -->
+      <canvas id="hero-canvas"></canvas>
 
-    <!-- Cinematic Gradient Overlays -->
-    <div class="hov-top"></div>
-    <div class="hov-line"></div>
+      <!-- Gradient overlays -->
+      <div class="hov-top"></div>
+      <div class="hov-line"></div>
 
-    <!-- Live Architecture Tag -->
-    <div class="hbadge">
-      <span class="hbadge-dot"></span>
-      <span class="hbadge-txt">Architecture · 4K Render</span>
-    </div>
+      <!-- Live Architecture Tag -->
+      <div class="hbadge">
+        <span class="hbadge-dot"></span>
+        <span class="hbadge-txt">Architecture · 4K Render</span>
+      </div>
 
-    <!-- Core Text Contents -->
-    <div class="hcontent">
-      <div class="hleft">
-        <div class="htag">Est. 2015 &nbsp;·&nbsp; Amravati, Maharashtra</div>
-        <h1 class="ht">Built on<br><em>Precision.</em><br>Valued with<br>Purpose.</h1>
-        <p class="hsubt">Maharashtra's most trusted name in property valuation, structural consulting and architectural advisory. 9+ years. 3 cities. Uncompromising standards.</p>
-        <div class="hbtns">
-          <button class="bpri" id="hero-services-btn">Our Services</button>
-          <button class="bsec" id="hero-contact-btn">Get a Valuation</button>
+      <!-- Hero text overlay — fades out as user scrolls -->
+      <div id="hero-text">
+        <div class="hcontent">
+          <div class="hleft">
+            <div class="htag">Est. 2015 &nbsp;·&nbsp; Amravati, Maharashtra</div>
+            <h1 class="ht">Built on<br><em>Precision.</em><br>Valued with<br>Purpose.</h1>
+            <p class="hsubt">Maharashtra's most trusted name in property valuation, structural consulting and architectural advisory. 9+ years. 3 cities. Uncompromising standards.</p>
+            <div class="hbtns">
+              <button class="bpri" id="hero-services-btn">Our Services</button>
+              <button class="bsec" id="hero-contact-btn">Get a Valuation</button>
+            </div>
+          </div>
+          <div class="hstats">
+            <div class="hstat"><span class="hstat-n">9+</span><span class="hstat-l">Years of Excellence</span></div>
+            <div class="hstat"><span class="hstat-n">3</span><span class="hstat-l">Cities, One Standard</span></div>
+            <div class="hstat"><span class="hstat-n">500+</span><span class="hstat-l">Properties Valued</span></div>
+          </div>
+        </div>
+
+        <!-- Scroll cue -->
+        <div class="hscroll">
+          <span>Scroll</span>
+          <div class="hscroll-bar"></div>
         </div>
       </div>
-      <div class="hstats">
-        <div class="hstat"><span class="hstat-n">9+</span><span class="hstat-l">Years of Excellence</span></div>
-        <div class="hstat"><span class="hstat-n">3</span><span class="hstat-l">Cities, One Standard</span></div>
-        <div class="hstat"><span class="hstat-n">500+</span><span class="hstat-l">Properties Valued</span></div>
-      </div>
-    </div>
 
-    <!-- Scroll cue -->
-    <div class="hscroll">
-      <span>Scroll</span>
-      <div class="hscroll-bar"></div>
+      <!-- ══ Annotation Cards — appear at scroll thresholds ══ -->
+      <div id="hero-card-1" class="hero-annotation hero-card-hidden">
+        <span class="ha-num">01 / 03</span>
+        <div class="ha-title">Property Valuation</div>
+        <p class="ha-desc">Certified valuations accepted by banks, courts & government bodies across Maharashtra.</p>
+      </div>
+
+      <div id="hero-card-2" class="hero-annotation hero-card-hidden">
+        <span class="ha-num">02 / 03</span>
+        <div class="ha-title">Structural Consulting</div>
+        <p class="ha-desc">Expert load analysis, safety certifications & renovation feasibility for every scale.</p>
+      </div>
+
+      <div id="hero-card-3" class="hero-annotation hero-card-hidden">
+        <span class="ha-num">03 / 03</span>
+        <div class="ha-title">Architectural Advisory</div>
+        <p class="ha-desc">Design-intent verification, space optimization & regulatory compliance from plan to completion.</p>
+      </div>
     </div>
   </section>
 
@@ -101,7 +132,7 @@
       <span class="mdot">●</span>
       <div class="mitem"><span class="mn">MH</span><span class="ml">Pan-Maharashtra</span></div>
       <span class="mdot">●</span>
-      <!-- duplicated contents for seamless loop rendering -->
+      <!-- duplicated for seamless loop -->
       <div class="mitem"><span class="mn">9+</span><span class="ml">Years Trusted</span></div>
       <span class="mdot">●</span>
       <div class="mitem"><span class="mn">3</span><span class="ml">Office Cities</span></div>
@@ -174,17 +205,6 @@
         <p class="sdesc">Strategic architectural advisory from planning to completion — space optimization, regulatory compliance, and design-intent verification tailored to your vision.</p>
         <span class="scta">Explore &rarr;</span>
       </div>
-    </div>
-  </section>
-
-  <!-- ══ SHOWCASE SECTION ══ -->
-  <section id="showcase">
-    <div id="showcase-bg"></div>
-    <canvas id="sc-canvas"></canvas>
-    <div class="sccontent">
-      <div class="ey">Precision at Every Scale</div>
-      <h2 class="sh2">Where <em>Structure</em><br>Meets Value</h2>
-      <p class="sc-hint">Drag to rotate &nbsp;·&nbsp; Scroll to continue</p>
     </div>
   </section>
 
@@ -313,8 +333,8 @@
   <!-- Modular Script Files -->
   <script src="js/main.js" defer></script>
   <script src="js/cursor.js" defer></script>
+  <script src="js/scroll-engine.js" defer></script>
   <script src="js/canvas-about.js" defer></script>
   <script src="js/canvas-services.js" defer></script>
-  <script src="js/canvas-showcase.js" defer></script>
 </body>
 </html>
