@@ -8,99 +8,42 @@
 (function () {
   'use strict';
 
-  // Annotation card visibility zones (scroll progress 0–1)
-  const ANNOTATIONS = [
-    { id: 'hero-card-1', show: 0.12, hide: 0.32 },
-    { id: 'hero-card-2', show: 0.38, hide: 0.58 },
-    { id: 'hero-card-3', show: 0.64, hide: 0.84 }
-  ];
-
   // ── DOM REFERENCES
   const heroSection = document.getElementById('hero');
-  const heroVideo = document.getElementById('hero-video');
   const heroText = document.getElementById('hero-text');
   const loadingOverlay = document.getElementById('loading-overlay');
   const loadingBar = document.getElementById('loading-bar');
   const loadingPercent = document.getElementById('loading-percent');
   
-  if (!heroSection || !heroVideo) return;
+  if (!heroSection) return;
 
   let ticking = false;
-  let videoLoaded = false;
-  let prevVisibleIds = '';
   
-  // Ensure the video is loaded enough to play
-  heroVideo.addEventListener('loadeddata', () => {
-    videoLoaded = true;
-    
-    if (loadingBar) {
-        loadingBar.style.width = '100%';
-    }
-    if (loadingPercent) {
-        loadingPercent.textContent = '100%';
-    }
-
-    // Hide loading overlay since video is ready
-    if (loadingOverlay) {
-      loadingOverlay.style.opacity = '0';
-      loadingOverlay.style.pointerEvents = 'none';
-      setTimeout(function () {
-        loadingOverlay.style.display = 'none';
-      }, 600);
-    }
-    
-    handleScroll();
-  }, { once: true });
-  
-  // Force load
-  heroVideo.load();
+  // Hide loading overlay immediately since video handles its own loading natively
+  if (loadingOverlay) {
+    loadingOverlay.style.opacity = '0';
+    loadingOverlay.style.pointerEvents = 'none';
+    setTimeout(function () {
+      loadingOverlay.style.display = 'none';
+    }, 600);
+  }
 
   // ── SCROLL HANDLER
   function handleScroll() {
-    if (!videoLoaded) return;
     if (ticking) return;
     ticking = true;
 
     requestAnimationFrame(function () {
-      const rect = heroSection.getBoundingClientRect();
-      const scrollableHeight = heroSection.offsetHeight - window.innerHeight;
-      const progress = Math.min(1, Math.max(0, -rect.top / scrollableHeight));
-
-      // 1. Hero text fade — first 8% of scroll
+      const scrollY = window.scrollY;
+      
+      // 1. Hero text fade — first 300px of scroll
       if (heroText) {
-        const textOpacity = Math.max(0, 1 - progress / 0.08);
+        const textOpacity = Math.max(0, 1 - scrollY / 300);
         heroText.style.opacity = String(textOpacity);
         heroText.style.pointerEvents = textOpacity < 0.01 ? 'none' : 'auto';
       }
 
-      // 3. Annotation card visibility
-      const newVisible = [];
-      for (let i = 0; i < ANNOTATIONS.length; i++) {
-        const ann = ANNOTATIONS[i];
-        if (progress >= ann.show && progress <= ann.hide) {
-          newVisible.push(ann.id);
-        }
-      }
-
-      const newIds = newVisible.sort().join(',');
-      if (newIds !== prevVisibleIds) {
-        prevVisibleIds = newIds;
-        for (let i = 0; i < ANNOTATIONS.length; i++) {
-          const el = document.getElementById(ANNOTATIONS[i].id);
-          if (el) {
-            const isVisible = newVisible.indexOf(ANNOTATIONS[i].id) !== -1;
-            if (isVisible) {
-              el.classList.add('hero-card-visible');
-              el.classList.remove('hero-card-hidden');
-            } else {
-              el.classList.remove('hero-card-visible');
-              el.classList.add('hero-card-hidden');
-            }
-          }
-        }
-      }
-
-      // 4. Update scroll progress bar
+      // 2. Update scroll progress bar
       var sp = document.getElementById('sp');
       if (sp) {
         var totalPct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
