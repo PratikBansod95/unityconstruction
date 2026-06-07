@@ -67,7 +67,7 @@
     const W = logicalWidth;
     const H = logicalHeight;
     ctx.clearRect(0, 0, W, H);
-    ang += 0.007;
+    ang += 0.0035;
 
     // Blueprint grid
     ctx.strokeStyle = 'rgba(184, 150, 62, 0.04)';
@@ -123,11 +123,11 @@
     ctx.strokeStyle = 'rgba(184, 150, 62, 0.16)';
     ctx.lineWidth = 1;
     ctx.beginPath(); 
-    ctx.ellipse(W / 2, H / 2, 420, 130, 0, 0, Math.PI * 2); 
+    ctx.ellipse(W / 2, H / 2 + 100, 420, 130, 0, 0, Math.PI * 2); 
     ctx.stroke();
 
     const dx = W / 2 + Math.cos(ang * 1.3) * 420;
-    const dy = H / 2 + Math.sin(ang * 1.3) * 130;
+    const dy = H / 2 + 100 + Math.sin(ang * 1.3) * 130;
     ctx.beginPath(); 
     ctx.arc(dx, dy, 5, 0, Math.PI * 2);
     ctx.fillStyle = '#B8963E'; 
