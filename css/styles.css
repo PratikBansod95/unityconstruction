@@ -215,6 +215,20 @@ nav.stuck {
   transform: rotate(135deg);
 }
 
+/* Logo image in nav (replaces the geometric gem) */
+.nlogo-img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  display: block;
+  filter: none;
+}
+
+[data-theme="dark"] .nlogo-img {
+  /* Keep the logo recognisable on dark backgrounds */
+  filter: brightness(1.1);
+}
+
 .nlogo-u {
   font-family: 'Outfit', sans-serif;
   font-size: 18px;
@@ -349,6 +363,12 @@ nav.stuck {
   gap: 13px;
 }
 
+.loading-logo-img {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+}
+
 .loading-logo .nlogo-gem {
   width: 48px;
   height: 48px;
@@ -424,7 +444,7 @@ nav.stuck {
 }
 
 [data-theme="light"] .hov-top {
-  background: linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0) 40%, rgba(243,240,232,0) 55%, rgba(243,240,232,0.75) 80%, rgba(243,240,232,1) 100%);
+  background: linear-gradient(180deg, rgba(0,0,0,0.22) 0%, rgba(0,0,0,0) 45%, rgba(248,250,252,0) 55%, rgba(248,250,252,0.85) 82%, rgba(248,250,252,1) 100%);
 }
 
 .hov-line {
@@ -1045,19 +1065,20 @@ h1.ht em { font-style: italic; color: var(--gold-hi); }
 
 .svc {
   padding: 52px 38px;
-  background: rgba(255, 255, 255, 0.02);
+  background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 32px;
+  border-radius: 24px;
   position: relative;
   overflow: hidden;
   cursor: pointer;
-  transition: transform 0.5s var(--ease), background 0.5s var(--ease), border-color 0.5s;
+  transition: transform 0.5s var(--ease), background 0.5s var(--ease), border-color 0.5s, box-shadow 0.5s;
 }
 
 .svc:hover {
-  transform: translateY(-8px) scale(1.02);
-  background: rgba(255, 255, 255, 0.04);
-  border-color: rgba(184, 150, 62, 0.4);
+  transform: translateY(-6px);
+  background: var(--surface);
+  border-color: rgba(184, 150, 62, 0.35);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.08);
 }
 
 .svc::before {
