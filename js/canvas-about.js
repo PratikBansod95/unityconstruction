@@ -85,23 +85,49 @@
       ctx.stroke();
     }
 
-    // Building parts
-    box(ctx, 0, -22, 0, 68, 128, 52, ang, W, H, 4);
-    box(ctx, -50, 23, 0, 28, 82, 46, ang, W, H, 4);
-    box(ctx, 50, 23, 0, 28, 82, 46, ang, W, H, 4);
-    box(ctx, 0, -100, 0, 42, 40, 36, ang, W, H, 4);
-    box(ctx, 0, -130, 0, 22, 20, 22, ang, W, H, 4);
-    box(ctx, 0, 50, 0, 88, 14, 68, ang, W, H, 4);
+    // Building parts - Modern Cantilevered Structure
+    // Core Tower (Solid structural core)
+    box(ctx, -40, -20, -40, 80, 260, 80, ang, W, H, 3.5); 
+    
+    // Base platform / Pool deck
+    box(ctx, 20, 105, 20, 320, 10, 280, ang, W, H, 2.5);
+    
+    // Lower Terrace Steps (adds landscape detail)
+    box(ctx, 120, 115, 100, 120, 10, 80, ang, W, H, 2);
+    box(ctx, 140, 125, 110, 80, 10, 60, ang, W, H, 2);
 
-    // Orbit ring
+    // Ground Floor Glass Volume
+    box(ctx, 10, 55, 10, 180, 90, 160, ang, W, H, 0.8);
+    
+    // Ground Floor Overhang (Cantilever Slab 1)
+    box(ctx, 30, 5, 30, 240, 10, 220, ang, W, H, 3);
+    
+    // First Floor Glass Volume
+    box(ctx, -10, -35, -10, 140, 70, 140, ang, W, H, 0.8);
+    
+    // First Floor Overhang (Cantilever Slab 2)
+    box(ctx, 10, -75, 10, 200, 10, 180, ang, W, H, 3);
+    
+    // Second Floor Glass Volume
+    box(ctx, -20, -110, -20, 100, 60, 100, ang, W, H, 0.8);
+    
+    // Second Floor Overhang (Cantilever Slab 3)
+    box(ctx, 0, -145, 0, 160, 10, 140, ang, W, H, 3);
+    
+    // Vertical Support Columns (adds architectural realism)
+    box(ctx, 130, 55, 120, 6, 90, 6, ang, W, H, 4); 
+    box(ctx, 130, 55, -60, 6, 90, 6, ang, W, H, 4); 
+    box(ctx, 90, -35, 80, 6, 70, 6, ang, W, H, 4); 
+
+    // Orbit ring (Expanded to fit new larger structure)
     ctx.strokeStyle = 'rgba(184, 150, 62, 0.12)';
     ctx.lineWidth = 0.5;
     ctx.beginPath(); 
-    ctx.ellipse(W / 2, H / 2, 150, 72, 0, 0, Math.PI * 2); 
+    ctx.ellipse(W / 2, H / 2, 220, 90, 0, 0, Math.PI * 2); 
     ctx.stroke();
 
-    const dx = W / 2 + Math.cos(ang * 1.3) * 150;
-    const dy = H / 2 + Math.sin(ang * 1.3) * 72;
+    const dx = W / 2 + Math.cos(ang * 1.3) * 220;
+    const dy = H / 2 + Math.sin(ang * 1.3) * 90;
     ctx.beginPath(); 
     ctx.arc(dx, dy, 4, 0, Math.PI * 2);
     ctx.fillStyle = '#B8963E'; 
