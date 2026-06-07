@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pagewise — Read Deeper</title>
+  <meta name="description" content="Turn any PDF into a focused reading experience. Pagewise uses AI to create story-like summaries, ADHD-friendly focus dimming, quizzes, and text-to-speech — so you actually finish what you read.">
+  
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="Pagewise — Read Deeper">
+  <meta property="og:description" content="AI-powered focus reading for students. Upload any PDF and read one paragraph at a time with summaries, quizzes, and text-to-speech.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+
+  <!-- Inline SVG Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='16' fill='%236366F1'/><ellipse cx='50' cy='50' rx='36' ry='16' fill='none' stroke='white' stroke-width='6'/><circle cx='50' cy='50' r='7' fill='white'/></svg>">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
+  
+  <!-- PDF.js Global library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <!-- Modular stylesheets -->
+  <script type="module" crossorigin src="/assets/index-DHiLAuqx.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-0pisuqLL.css">
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════
+       LANDING
+  ═══════════════════════════════════════ -->
+  <div id="landing">
+    <div class="land-bg"></div>
+
+    <nav class="nav">
+      <a class="nav-logo" href="#">
+        <div class="nav-logo-mark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round">
+            <ellipse cx="12" cy="12" rx="10" ry="4.5"/>
+            <circle cx="12" cy="12" r="2" fill="white" stroke="none"/>
+          </svg>
+        </div>
+        Pagewise
+      </a>
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <span class="nav-tag">Free Beta</span>
+        <button class="theme-toggle-btn" onclick="toggleTheme()" aria-label="Toggle theme">
+          <svg class="sun-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="moon-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <section class="hero-container">
+      <div class="hero-left">
+        <div class="hero-eyebrow">
+          <span class="eyebrow-dot"></span>
+          AI-powered focus reading
+        </div>
+        <h1 class="hero-h1">Turn any PDF into a<br><span>magical book</span></h1>
+        <p class="hero-desc">
+          Upload any textbook, paper, or lecture notes. Pagewise uses AI to create story-like summary threads that guide you, fading distractions away so you read <strong>one paragraph at a time</strong>. Perfect for students and ADHD minds.
+        </p>
+
+        <div class="hero-actions">
+          <button class="cta-primary-btn" onclick="scrollToWorkspace()">Start Reading ✦</button>
+          <button class="cta-secondary-btn" onclick="loadDemoDoc()">Try Demo Book 📖</button>
+        </div>
+
+        <div class="hero-features-list">
+          <div class="feat-badge">
+            <span class="badge-icon">◎</span>
+            <span class="badge-text">Fish-eye focus</span>
+          </div>
+          <div class="feat-badge">
+            <span class="badge-icon">✦</span>
+            <span class="badge-text">AI summaries</span>
+          </div>
+          <div class="feat-badge">
+            <span class="badge-icon">🧠</span>
+            <span class="badge-text">Active recall quizzes</span>
+          </div>
+          <div class="feat-badge">
+            <span class="badge-icon">🔊</span>
+            <span class="badge-text">Text to speech</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-right" id="workspaceSection">
+        <div class="workspace-card">
+          <div class="workspace-tabs">
+            <button class="w-tab active" id="tabUploadBtn" onclick="switchHeroTab('upload')">Workspace</button>
+            <button class="w-tab" id="tabDemoBtn" onclick="switchHeroTab('demo')">How It Works (Live)</button>
+          </div>
+
+          <!-- Tab Content 1: Upload Workspace -->
+          <div class="w-tab-content active" id="tabContentUpload">
+            <span class="field-label">Your Gemini API Key</span>
+            <div class="key-row">
+              <input type="password" class="key-input" id="apiKeyInput"
+                placeholder="AIzaSy… (free from Google AI Studio)" autocomplete="off">
+              <button class="key-btn" onclick="saveKey()">Save Key</button>
+            </div>
+            <div class="key-note">
+              <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="5"/><path d="M6 5.5v3M6 4h.01"/></svg>
+              Saved locally in this browser.
+              <a href="https://aistudio.google.com/app/apikey" target="_blank">Get a free key →</a>
+            </div>
+
+            <div class="divider">
+              <div class="divider-line"></div>
+              <span class="divider-text">then drop your PDF</span>
+              <div class="divider-line"></div>
+            </div>
+
+            <div class="upload-zone" id="uploadZone">
+              <input type="file" id="fileInput" accept=".pdf" onchange="handleFile(event)">
+              <div class="upload-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                  <polyline points="14 2 14 8 20 8"/>
+                  <line x1="12" y1="18" x2="12" y2="12"/>
+                  <polyline points="9 15 12 12 15 15"/>
+                </svg>
+              </div>
+              <div class="upload-title">Drop your PDF here</div>
+              <div class="upload-sub">or click to browse from files</div>
+            </div>
+          </div>
+
+          <!-- Tab Content 2: Live Mock Reader -->
+          <div class="w-tab-content" id="tabContentDemo">
+            <div class="mock-reader-frame">
+              <div class="mock-header">
+                <div class="mock-dots">
+                  <span class="m-dot"></span>
+                  <span class="m-dot"></span>
+                  <span class="m-dot"></span>
+                </div>
+                <span class="mock-title">Interactive Preview</span>
+              </div>
+              <div class="mock-body">
+                <div class="mock-para-block active" onclick="clickMockPara(this)">
+                  <div class="mock-para-summary">✦ Neurons firing together strengthen synapses, forming long-term memories.</div>
+                  <div class="mock-para-full">
+                    When you study new concepts, the synapses between your neurons undergo chemical changes. Donald Hebb famously summarized this biological mechanism: "neurons that fire together, wire together," forming the cellular foundation of learning.
+                  </div>
+                </div>
+                <div class="mock-para-block" onclick="clickMockPara(this)">
+                  <div class="mock-para-summary">✦ Multitasking triggers rapid cognitive switching, draining mental focus.</div>
+                  <div class="mock-para-full">
+                    Cognitive psychology shows that the human brain cannot focus on two complex tasks at once. Instead, it switches back and forth, incurring a "cognitive switch cost" that drains mental energy, increases errors, and slows retention.
+                  </div>
+                </div>
+                <div class="mock-para-block" onclick="clickMockPara(this)">
+                  <div class="mock-para-summary">✦ Entering flow state accelerates synaptic plasticity and filters distractions.</div>
+                  <div class="mock-para-full">
+                    Flow is a state of deep absorption and concentration where external distractions are naturally filtered out. In this state, the efficiency of neural changes increases due to targeted neurotransmitter release in the brain.
+                  </div>
+                </div>
+              </div>
+              <div class="mock-footer">
+                <span>💡 Click any summary line to test the focus expansion</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <div style="border-top:1px solid var(--rule);background:var(--paper);width:100%;">
+      <div class="how-section">
+        <h2 class="how-title">How the <em>magic</em> happens</h2>
+        <p class="how-sub">Three steps from boring PDF to beautiful focused book</p>
+        <div class="how-steps">
+          <div class="how-step-card">
+            <div class="step-num">01</div>
+            <div class="step-icon">📄</div>
+            <div class="step-title">Upload your PDF</div>
+            <div class="step-body">Any textbook, research paper, or class notes. Pagewise extracts every paragraph, heading, and structure — preserving the original flow.</div>
+          </div>
+          <div class="how-step-card">
+            <div class="step-num">02</div>
+            <div class="step-icon">✦</div>
+            <div class="step-title">AI reads it first</div>
+            <div class="step-body">Gemini AI generates a focused 8–14 word summary for every paragraph — written like story breadcrumbs, not dictionary entries.</div>
+          </div>
+          <div class="how-step-card">
+            <div class="step-num">03</div>
+            <div class="step-icon">📖</div>
+            <div class="step-title">Read with total focus</div>
+            <div class="step-body">Click any paragraph to expand it fully. Everything else fades to summaries. Your brain stays locked on exactly one thing at a time.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       PROCESSING
+  ═══════════════════════════════════════ -->
+  <div id="processing" style="display:none;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;">
+    <div class="proc-wrap">
+      <div class="proc-book">
+        <div class="proc-book-spine"></div>
+        <div class="proc-book-l"></div>
+        <div class="proc-book-r"></div>
+      </div>
+      <div class="proc-title">Transforming your PDF…</div>
+      <div class="proc-sub">Usually takes 20–40 seconds</div>
+      <div class="proc-steps">
+        <div class="pstep active" id="step1"><div class="pstep-dot"></div>Reading PDF structure and text</div>
+        <div class="pstep" id="step2"><div class="pstep-dot"></div>Sending to Gemini AI</div>
+        <div class="pstep" id="step3"><div class="pstep-dot"></div>Crafting focus summaries for every paragraph</div>
+        <div class="pstep" id="step4"><div class="pstep-dot"></div>Building your beautiful book view</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       READER
+  ═══════════════════════════════════════ -->
+  <div id="reader">
+    <div class="r-bar" role="toolbar" aria-label="Reader controls">
+      <button class="r-bar-sidebar-toggle" onclick="toggleSidebar()" aria-label="Toggle table of contents">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <div class="r-bar-logo">Page<em>wise</em></div>
+      <div class="r-bar-sep"></div>
+      <div class="r-bar-docname" id="rDocName">—</div>
+      <div class="r-bar-actions">
+        <button class="theme-toggle-btn" onclick="toggleTheme()" aria-label="Toggle light/dark theme">
+          <svg class="sun-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="moon-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+        <button class="r-btn" id="fontToggleBtn" onclick="toggleFont()" aria-label="Change reading font">Serif 📖</button>
+        <button class="r-btn" id="pagedToggleBtn" onclick="togglePaged()" aria-label="Toggle paged book view">Paged Book 📖</button>
+        <button class="r-btn" id="prevPageBtn" onclick="prevPage()" aria-label="Previous page" style="display: none;">◀ Prev</button>
+        <button class="r-btn" id="nextPageBtn" onclick="nextPage()" aria-label="Next page" style="display: none;">Next ▶</button>
+        <button class="r-btn" id="bionicToggleBtn" onclick="toggleBionic()" aria-label="Toggle bionic reading mode">Bionic ⚡</button>
+        <button class="r-btn" id="conceptMapToggleBtn" onclick="toggleConceptMap()" aria-label="Toggle concept map" style="display: none;">Concept Map 🧠</button>
+        <div class="fs-ctrl" role="group" aria-label="Font size">
+          <button onclick="chgFs(-1)" aria-label="Decrease font size">A−</button>
+          <span id="fsLabel">18</span>
+          <button onclick="chgFs(1)" aria-label="Increase font size">A+</button>
+        </div>
+        <button class="r-btn" onclick="expandAll()" aria-label="Expand all paragraphs">
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 7l4-4 4 4"/></svg>
+          Expand
+        </button>
+        <button class="r-btn" onclick="collapseAll()" aria-label="Collapse all paragraphs">
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 3l4 4 4-4"/></svg>
+          Collapse
+        </button>
+        <button class="r-btn" onclick="goHome()" aria-label="Upload a new document">
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 5l4-4 4 4M2 4.5V9h2V7h2v2h2V4.5"/></svg>
+          New doc
+        </button>
+      </div>
+      <div class="r-progress" id="rProg" style="width:0%"></div>
+    </div>
+
+    <div class="r-layout">
+      <aside class="r-sidebar" id="rSidebar"></aside>
+      <main class="r-main" id="rMain"></main>
+    </div>
+
+    <div class="kbd-hint">
+      <kbd>↓</kbd> next &nbsp;<kbd>↑</kbd> prev &nbsp;<kbd>Esc</kbd> collapse
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <!-- Concept Map Modal Overlay -->
+  <div id="conceptMapModal" class="cm-modal" style="display: none;">
+    <div class="cm-modal-content">
+      <div class="cm-modal-header">
+        <h3>Interactive Concept Map</h3>
+        <button class="cm-close-btn" onclick="toggleConceptMap()">✕</button>
+      </div>
+      <div class="cm-modal-body">
+        <p class="cm-intro">Nodes represent key terms from the document. Pass quizzes to master them! (Green = Mastered, Orange = Learning, Gray = Unattempted)</p>
+        <div id="conceptMapContainer"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modular entry point -->
+</body>
+</html>
