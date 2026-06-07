@@ -33,19 +33,21 @@
   --border2: rgba(255, 255, 255, 0.15);
   --nav: rgba(0, 0, 0, 0.7);
   --surface: #09090B;
+  --grid: rgba(255, 255, 255, 0.025);
 }
 
 [data-theme="light"] {
-  --bg: #F3F0E8;
-  --bg2: #EAE6DC;
-  --bg3: #E0DBD0;
-  --text: #0E0E0E;
-  --text2: #4A4742;
-  --text3: #8A8782;
-  --border: rgba(0, 0, 0, 0.08);
-  --border2: rgba(0, 0, 0, 0.15);
-  --nav: rgba(243, 240, 232, 0.88);
+  --bg: #F8FAFC;
+  --bg2: #F1F5F9;
+  --bg3: #E2E8F0;
+  --text: #0F172A;
+  --text2: #334155;
+  --text3: #64748B;
+  --border: rgba(15, 23, 42, 0.08);
+  --border2: rgba(15, 23, 42, 0.15);
+  --nav: rgba(248, 250, 252, 0.88);
   --surface: #FFFFFF;
+  --grid: rgba(15, 23, 42, 0.035);
 }
 
 html {
@@ -54,11 +56,16 @@ html {
 
 body {
   font-family: 'Inter', sans-serif;
-  background: var(--bg);
+  background-color: var(--bg);
+  background-image: 
+    linear-gradient(to right, var(--grid) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: center top;
   color: var(--text);
   overflow-x: hidden;
   cursor: none; /* Hidden for custom cursor, overridden on touch devices below */
-  transition: background 0.55s var(--ease), color 0.55s var(--ease);
+  transition: background-color 0.55s var(--ease), color 0.55s var(--ease);
 }
 
 /* Fallback default cursor on touchscreens or devices that don't support fine pointer */
@@ -1128,7 +1135,7 @@ h1.ht em { font-style: italic; color: var(--gold-hi); }
    10. LOCATIONS COMPONENT
    ========================================================================== */
 #locations {
-  background: var(--bg);
+  background-color: var(--bg);
 }
 
 .lhead {
@@ -1257,7 +1264,7 @@ h1.ht em { font-style: italic; color: var(--gold-hi); }
    11. CONTACT COMPONENT
    ========================================================================== */
 #contact {
-  background: var(--bg2);
+  background-color: var(--bg2);
 }
 
 .cgrid {
