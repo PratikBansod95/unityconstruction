@@ -24,7 +24,6 @@ unity-construction/
   │   ├── cursor.js           # Touch-screen guarded custom cursor logic
   │   ├── canvas-about.js     # Rotating blueprint building animation
   │   ├── canvas-services.js  # Service orb canvas icons
-  │   └── canvas-showcase.js  # Interactive 3D drag-to-rotate showcase building
   ├── index.html              # Clean, SEO-optimized markup entry point
   └── README.md               # Project documentation
 ```

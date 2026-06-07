@@ -169,4 +169,41 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // ── 6. MAGNETIC BUTTONS (Dribbble/Apple aesthetic)
+  const magneticEls = document.querySelectorAll('.ncta, .bpri, .bsec');
+  magneticEls.forEach(btn => {
+    btn.addEventListener('mousemove', (e) => {
+      const rect = btn.getBoundingClientRect();
+      const h = rect.width / 2;
+      const v = rect.height / 2;
+      const x = e.clientX - rect.left - h;
+      const y = e.clientY - rect.top - v;
+      // Gentle pull towards cursor
+      btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px) scale(1.05)`;
+    });
+    btn.addEventListener('mouseleave', () => {
+      // Snap back
+      btn.style.transform = `translate(0px, 0px) scale(1)`;
+    });
+  });
+
+  // ── 7. HERO PARALLAX (Dora AI style)
+  const heroText = document.getElementById('hero-text');
+  const hbadge = document.querySelector('.hbadge');
+  if (heroText) {
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      if (scrollY < window.innerHeight) {
+        // Parallax shift up and scale up slightly as you scroll down
+        const scale = 1 + (scrollY * 0.0005);
+        const yOffset = -(scrollY * 0.15);
+        heroText.style.transform = `translateY(${yOffset}px) scale(${scale})`;
+        
+        if (hbadge) {
+           hbadge.style.transform = `translateY(${-(scrollY * 0.3)}px)`;
+        }
+      }
+    }, { passive: true });
+  }
 });
