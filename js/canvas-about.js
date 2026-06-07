@@ -85,51 +85,51 @@
       ctx.stroke();
     }
 
-    // Building parts - Modern Cantilevered Structure (Scaled 1.3x)
+    // Building parts - Modern Cantilevered Structure (Scaled 1.6x and Centered)
     // Core Tower (Solid structural core)
-    box(ctx, -52, -26, -52, 104, 338, 104, ang, W, H, 3.5); 
+    box(ctx, -96, 0, -96, 128, 416, 128, ang, W, H, 3.5); 
     
     // Base platform / Pool deck
-    box(ctx, 26, 136, 26, 416, 13, 364, ang, W, H, 2.5);
+    box(ctx, 0, 200, 0, 512, 16, 448, ang, W, H, 2.5);
     
     // Lower Terrace Steps (adds landscape detail)
-    box(ctx, 156, 150, 130, 156, 13, 104, ang, W, H, 2);
-    box(ctx, 182, 162, 143, 104, 13, 78, ang, W, H, 2);
+    box(ctx, 160, 216, 128, 192, 16, 128, ang, W, H, 2);
+    box(ctx, 192, 232, 144, 128, 16, 96, ang, W, H, 2);
 
     // Ground Floor Glass Volume
-    box(ctx, 13, 71, 13, 234, 117, 208, ang, W, H, 0.8);
+    box(ctx, -16, 120, -16, 288, 144, 256, ang, W, H, 0.8);
     
     // Ground Floor Overhang (Cantilever Slab 1)
-    box(ctx, 39, 6, 39, 312, 13, 286, ang, W, H, 3);
+    box(ctx, 16, 40, 16, 384, 16, 352, ang, W, H, 3);
     
     // First Floor Glass Volume
-    box(ctx, -13, -45, -13, 182, 91, 182, ang, W, H, 0.8);
+    box(ctx, -48, -24, -48, 224, 112, 224, ang, W, H, 0.8);
     
     // First Floor Overhang (Cantilever Slab 2)
-    box(ctx, 13, -97, 13, 260, 13, 234, ang, W, H, 3);
+    box(ctx, -16, -88, -16, 320, 16, 288, ang, W, H, 3);
     
     // Second Floor Glass Volume
-    box(ctx, -26, -143, -26, 130, 78, 130, ang, W, H, 0.8);
+    box(ctx, -64, -144, -64, 160, 96, 160, ang, W, H, 0.8);
     
     // Second Floor Overhang (Cantilever Slab 3)
-    box(ctx, 0, -188, 0, 208, 13, 182, ang, W, H, 3);
+    box(ctx, -32, -200, -32, 256, 16, 224, ang, W, H, 3);
     
     // Vertical Support Columns (adds architectural realism)
-    box(ctx, 169, 71, 156, 8, 117, 8, ang, W, H, 4); 
-    box(ctx, 169, 71, -78, 8, 117, 8, ang, W, H, 4); 
-    box(ctx, 117, -45, 104, 8, 91, 8, ang, W, H, 4); 
+    box(ctx, 176, 120, 160, 10, 144, 10, ang, W, H, 4); 
+    box(ctx, 176, 120, -128, 10, 144, 10, ang, W, H, 4); 
+    box(ctx, 112, -24, 96, 10, 112, 10, ang, W, H, 4); 
 
-    // Orbit ring (Expanded to fit new larger structure)
-    ctx.strokeStyle = 'rgba(184, 150, 62, 0.12)';
-    ctx.lineWidth = 0.5;
+    // Orbit ring (Expanded to fully enclose the new base)
+    ctx.strokeStyle = 'rgba(184, 150, 62, 0.16)';
+    ctx.lineWidth = 1;
     ctx.beginPath(); 
-    ctx.ellipse(W / 2, H / 2, 286, 117, 0, 0, Math.PI * 2); 
+    ctx.ellipse(W / 2, H / 2, 420, 130, 0, 0, Math.PI * 2); 
     ctx.stroke();
 
-    const dx = W / 2 + Math.cos(ang * 1.3) * 286;
-    const dy = H / 2 + Math.sin(ang * 1.3) * 117;
+    const dx = W / 2 + Math.cos(ang * 1.3) * 420;
+    const dy = H / 2 + Math.sin(ang * 1.3) * 130;
     ctx.beginPath(); 
-    ctx.arc(dx, dy, 4, 0, Math.PI * 2);
+    ctx.arc(dx, dy, 5, 0, Math.PI * 2);
     ctx.fillStyle = '#B8963E'; 
     ctx.fill();
 
