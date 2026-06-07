@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Welcome !</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="vendors/owl-carousel/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="vendors/owl-carousel/css/owl.theme.default.css">
+  <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="vendors/aos/css/aos.css">
+  <link rel="stylesheet" href="css/style.min.css">
+  <link href="img/fav.png" rel="shortcut icon"/>
+<style>
+
+.mySlides {display: none;}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1350px;
+  position: relative;
+  margin: auto;
+}
+
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 5.0s;
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}
+</style>
+</head>
+<body id="body" data-spy="scroll" data-target=".navbar" data-offset="100">
+  <header id="header-section">
+    <nav class="navbar navbar-expand-lg pl-3 pl-sm-0" id="navbar">
+    <div class="container">
+      <div class="navbar-brand-wrapper d-flex w-100">
+     <a href="index.php"> <img src="img/logo.png" alt="logo" style="width:80px"></a>
+        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="mdi mdi-menu navbar-toggler-icon"></span>
+        </button> 
+      </div>
+      <div class="collapse navbar-collapse navbar-menu-wrapper" id="navbarSupportedContent">
+        <ul class="navbar-nav align-items-lg-center align-items-start ml-auto">
+          <li class="d-flex align-items-center justify-content-between pl-4 pl-lg-0">
+            <div class="navbar-collapse-logo">
+            <a href="index.php">  <img src="img/logo.png" alt="logo" style="width:60px"></a>
+            </div>
+            <button class="navbar-toggler close-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="mdi mdi-close navbar-toggler-icon pl-5" ></span>
+            </button>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.php">About  </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="services.php"> Services </a>  
+          </li>
+		  <li class="nav-item">
+            <a class="nav-link" href="clients.php">  Clients </a>  
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.php">Contact   </a>
+          </li>
+          <li class="nav-item btn-contact-us pl-4 pl-lg-0">
+            <button class="btn btn-info" data-toggle="modal" data-target="#exampleModal">Enquiry form</button>
+          </li>
+        </ul>
+      </div>
+    </div> 
+    </nav>   
+  </header> 	
+   <div class="content-wrapper">
+    <div class="container">
+    <section class="customer-feedback">
+       <div class="slideshow-container">
+
+<div class="slideshow-container">
+
+
+
+</div>
+<br>
+
+<div style="text-align:center">
+
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+ <span class="dot"></span> 
+</div>
+<br>
+
+
+
+<script>
+let slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}    
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+  setTimeout(showSlides, 5000); // Change image every 5 seconds
+}
+</script>
+
+      </div>
+      </section>
+ 
+ 
+  </div>
+    </div> 
+
+		
+  <div class="content-wrapper">
+    <div class="container">
+    
+       <section class="digital-marketing-service" id="digital-marketing-section">
+        <div class="row align-items-center">
+          <div class="col-12 col-lg-8 grid-margin grid-margin-lg-0">
+            <h3 class="m-0">About The Unity Construction</h3>
+            <div class="col-lg-8 col-xl-12 p-0">
+              <p class="py-4 m-0 text-muted"></p>
+             
+            </div>    
+          </div>
+          <div class="col-12 col-lg-3 p-0 img-digital grid-margin grid-margin-lg-0">
+             <img src="admin/upload/"  class="img-fluid">
+		
+          </div>
+        </div>
+       
+      </section>    <br> <br> 
+      <section class="case-studies" id="case-studies-section">
+        <div class="row grid-margin">
+          <div class="col-12 text-center pb-5">
+            <h2>Services We Offer</h2>
+           
+          </div>
+		           
+         
+       
+        </div>
+      </section>     
+    
+	
+<section>
+  <div class="col-12 text-center pb-5">
+            <h2>Location We Serve</h2>
+           
+          </div>
+        <div>
+          <div class="pb-4">
+         <!--<iframe src="https://www.google.com/maps/d/embed?mid=13fbJrMWmvk5K6RQTOWC7guwbWyJQEaI&ehbc=2E312F" width="940" height="480"></iframe>-->
+		<center> 
+		<iframe src="https://www.google.com/maps/d/embed?mid=1C5mpV8Ae1KRJzzgX7J8Nt3OMCYIsDjE&femb=1&ll=18.40463530555834%2C76.53686355000004&z=7" width="100%" height="480"></iframe>
+			
+			</center> 
+          </div>
+                 
+        </div>
+      </section>   
+	  
+	 
+	
+	
+	
+	
+	
+      <section class="contact-us" id="contact-section">
+        <div class="contact-us-bgimage grid-margin" >
+          <div class="pb-4">
+            <h4 class="px-3 px-md-0 m-0" data-aos="fade-down">Quick Enquiry</h4>
+            <h4 class="pt-1" data-aos="fade-down"> Unity Construction</h4>
+          </div>
+          <div>
+            <button class="btn btn-rounded btn-outline-danger">8411998821 / 7385058163</button>
+          </div>          
+        </div>
+      </section>
+      
+      <a  class="whats-app" href="https://api.whatsapp.com/send?phone=918411998821&text=Hi" target="_blank">
+   <img src="img/wh.png" style="width:40px;height:40px;">
+</a>
+
+<section class="contact-details" id="contact-details-section" >
+        <div class="row text-center text-md-left" >
+          <div class="col-12 col-md-6 col-lg-4 grid-margin">
+             <h5 class="pb-2">About Us</h5>
+            <p> Unity Construction is a progressive company with 9+ years of experience in the valuation business. <br>
+			Registered office in Amravati Maharashtra, it specializes in providing Valuation services  <br>
+			on various platforms with digital flair. Also ventured into structural consulting and architectural consulting.</p>      
+          </div>
+         
+          <div class="col-12 col-md-6 col-lg-2	grid-margin">
+            <h5 class="pb-2">Our Guidelines</h5>
+			 <a href="about.php"><p class="m-0 pb-2">About Us</p></a>   
+			  <a href="contact.php"><p class="m-0 pb-2">Contact Us</p></a>   
+            <a href="terms.php"><p class="m-0 pb-2">Terms & Conditions</p></a>   
+            <a href="privacy.php" ><p class="m-0 pt-1 pb-2">Privacy Policy</p></a> 
+           
+          </div>
+          <div class="col-12 col-md-6 col-lg-3 grid-margin">
+              <h5 class="pb-2">Our Address</h5>
+              <p class="text-muted">Second floor , beside easy home finance gulshan arcade railway station chowk , Amaravati -444601</p>
+			  <p class="text-muted"> Shop No. 1, Ground Floor,  F Wing, Sumit Samarth Arcade, Tatya Tope Nagar, Aarey Road, Goregaon (West), Mumbai- 400104 </p>
+			 <p class="text-muted">  Pune Office Address-
+Flat No. F- 132, First Floor, TROPICA, Ravet,
+Katraj-Dehu Byepass, Near Sameer Banquet & Lawns, Pimpri-Chinchwad, Pune- 412101</p>
+             
+			   <div class="pt-2">
+              <p class="text-muted m-0">unityconstructionofficial18@gmail.com</p>
+              <p class="text-muted m-0">8411998821 / 7385058163</p>
+            </div>  <br>
+			 <div class="d-flex justify-content-center justify-content-md-start">
+                <!--<a href="#"><span class="mdi mdi-facebook"></span></a>
+                <a href="#"><span class="mdi mdi-twitter"></span></a>
+                <a href="#"><span class="mdi mdi-instagram"></span></a>
+                <a href="#"><span class="mdi mdi-linkedin"></span></a>-->
+				<a href="https://www.facebook.com/profile.php?id=100093304771966&is_tour_dismissed=true" target="_blank"> <img src="img/fb.png"  style="width:40px;height:30px;padding-right:10px;" class="img-fluid"></a>
+				 <a href="#"> <img src="img/twitter.png"  style="width:40px;height:30px;padding-right:10px;" class="img-fluid"></a>
+				  <a href="#"> <img src="img/instagram.png"  style="width:40px;height:30px;padding-right:10px;" class="img-fluid"></a>
+				    <a href="#"> <img src="img/linkdin.png"  style="width:40px;height:30px;padding-right:10px;" class="img-fluid"></a>
+              </div>
+          </div>
+		   <div class="col-12 col-md-6 col-lg-3 grid-margin">
+              <h5 class="pb-2">Our Map</h5>
+     <iframe src="https://www.google.com/maps/d/embed?mid=1C5mpV8Ae1KRJzzgX7J8Nt3OMCYIsDjE&femb=1&ll=18.40463530555834%2C76.53686355000004&z=7" width="100%" height="280"></iframe>
+		
+          </div>
+        </div>  
+      </section>
+      <footer class="border-top">
+        <div class="d-flex justify-content-between">
+          <p class="text-center text-muted pt-4">Copyright © 2023<a href="" class="px-1"> Unity Construction </a>All rights reserved.</p>
+         
+        </div>
+      </footer>
+      <!-- Modal for Contact - us Button -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="exampleModalLabel">Quick Enquiry</h4>
+            </div>
+            <div class="modal-body">
+              <form action="submit-enquiry.php" method="POST">
+                <div class="form-group">
+                  <label for="Name">Your Name</label>
+                  <input type="text" class="form-control" id="Name" name="name"  required placeholder="Name">
+                </div>
+				 <div class="form-group">
+                  <label for="Name">Phone</label>
+                  <input type="text" class="form-control" id="phone" name="phone" required placeholder="Phone">
+                </div>
+                <div class="form-group">
+                  <label for="Email">Email</label>
+                  <input type="email" class="form-control" id="Email-1" name="email" required placeholder="Email">
+                </div>
+                <div class="form-group">
+                  <label for="Message">Message</label>
+                  <textarea class="form-control" id="Message" name="message" placeholder="Enter your Message"></textarea>
+                </div>
+				<div class="modal-footer">
+            
+              <button type="submit" class="btn btn-success">Submit</button>
+			    <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+            </div>
+              </form>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div> 
+  </div>
+  <script src="vendors/jquery/jquery.min.js"></script>
+  <script src="vendors/bootstrap/bootstrap.min.js"></script>
+  <script src="vendors/owl-carousel/js/owl.carousel.min.js"></script>
+  <script src="vendors/aos/js/aos.js"></script>
+  <script src="js/landingpage.js"></script>
+  
+  <style>
+.whats-app {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    bottom: 40px;
+   
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+   
+    margin-right: 15px;
+    z-index: 100;
+	 Right : 0;
+}
+
+.my-float {
+    margin-top: 10px;
+}
+</style>
+</body>
+
+
+</html>	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
