@@ -29,8 +29,8 @@
   let videoLoaded = false;
   let prevVisibleIds = '';
   
-  // Ensure the video is loaded enough to scrub
-  heroVideo.addEventListener('loadedmetadata', () => {
+  // Ensure the video is loaded enough to play
+  heroVideo.addEventListener('loadeddata', () => {
     videoLoaded = true;
     
     if (loadingBar) {
@@ -52,28 +52,8 @@
     handleScroll();
   }, { once: true });
   
-  // Force load to ensure loadedmetadata fires
+  // Force load
   heroVideo.load();
-
-  let targetVideoTime = 0;
-  let currentVideoTime = 0;
-
-  // Continuous loop to smoothly interpolate video scrub (Lerp)
-  function renderLoop() {
-    if (videoLoaded && heroVideo.duration) {
-      // Smoothly approach the target time
-      currentVideoTime += (targetVideoTime - currentVideoTime) * 0.08;
-      
-      // Only update DOM if the change is meaningful to save CPU
-      if (Math.abs(targetVideoTime - currentVideoTime) > 0.001) {
-        heroVideo.currentTime = currentVideoTime;
-      }
-    }
-    requestAnimationFrame(renderLoop);
-  }
-  
-  // Start the render loop
-  requestAnimationFrame(renderLoop);
 
   // ── SCROLL HANDLER
   function handleScroll() {
@@ -86,12 +66,7 @@
       const scrollableHeight = heroSection.offsetHeight - window.innerHeight;
       const progress = Math.min(1, Math.max(0, -rect.top / scrollableHeight));
 
-      // 1. Update target video time for the lerp loop
-      if (heroVideo.duration) {
-        targetVideoTime = Math.min(progress * heroVideo.duration, heroVideo.duration - 0.01);
-      }
-
-      // 2. Hero text fade — first 8% of scroll
+      // 1. Hero text fade — first 8% of scroll
       if (heroText) {
         const textOpacity = Math.max(0, 1 - progress / 0.08);
         heroText.style.opacity = String(textOpacity);
