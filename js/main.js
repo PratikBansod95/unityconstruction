@@ -191,19 +191,36 @@ document.addEventListener('DOMContentLoaded', () => {
   // ── 7. HERO PARALLAX (Dora AI style)
   const heroText = document.getElementById('hero-text');
   const hbadge = document.querySelector('.hbadge');
+  
   if (heroText) {
+    let targetScrollY = window.scrollY;
+    let currentScrollY = window.scrollY;
+    
     window.addEventListener('scroll', () => {
-      const scrollY = window.scrollY;
-      if (scrollY < window.innerHeight) {
+      targetScrollY = window.scrollY;
+    }, { passive: true });
+    
+    function renderParallax() {
+      // Smoothly interpolate towards the target scroll position
+      currentScrollY += (targetScrollY - currentScrollY) * 0.08;
+      
+      if (currentScrollY < window.innerHeight * 1.5) {
         // Parallax shift up and scale up slightly as you scroll down
-        const scale = 1 + (scrollY * 0.0005);
-        const yOffset = -(scrollY * 0.15);
-        heroText.style.transform = `translateY(${yOffset}px) scale(${scale})`;
+        const scale = 1 + (currentScrollY * 0.0005);
+        const yOffset = -(currentScrollY * 0.15);
         
-        if (hbadge) {
-           hbadge.style.transform = `translateY(${-(scrollY * 0.3)}px)`;
+        // Only update if difference is meaningful
+        if (Math.abs(targetScrollY - currentScrollY) > 0.01) {
+          heroText.style.transform = `translateY(${yOffset}px) scale(${scale})`;
+          
+          if (hbadge) {
+             hbadge.style.transform = `translateY(${-(currentScrollY * 0.3)}px)`;
+          }
         }
       }
-    }, { passive: true });
+      requestAnimationFrame(renderParallax);
+    }
+    
+    requestAnimationFrame(renderParallax);
   }
 });
